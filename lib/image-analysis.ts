@@ -123,7 +123,7 @@ export function calculateNoise(imageData: ImageData): number {
   const meanG = sumG / pixelCount
   const meanB = sumB / pixelCount
 
-  const varianceR = sumSqR / pixelCount - meanR * meanR
+  const varianceR = sumSqR / pixelCount - meanR * meanR // дисперсия
   const varianceG = sumSqG / pixelCount - meanG * meanG
   const varianceB = sumSqB / pixelCount - meanB * meanB
 

@@ -96,13 +96,7 @@ export default function TeamPage() {
                   обоснованных метрик качества изображений.
                 </p>
               </div>
-              <div>
-                <h3 className="font-semibold mb-2">Методология</h3>
-                <p className="text-sm text-muted-foreground">
-                  Agile разработка с еженедельными спринтами, использование Git для контроля версий, code review и
-                  парное программирование.
-                </p>
-              </div>
+              
               <div>
                 <h3 className="font-semibold mb-2">Технологии</h3>
                 <div className="flex flex-wrap gap-1">

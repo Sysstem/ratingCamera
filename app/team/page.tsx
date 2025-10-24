@@ -190,47 +190,6 @@ export default function TeamPage() {
           ))}
         </div>
 
-        {/* Git Workflow */}
-        <Card className="mt-8">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Github className="h-5 w-5" />
-              Организация работы с Git
-            </CardTitle>
-            <CardDescription>Методология контроля версий и совместной разработки</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <h3 className="font-semibold mb-3">Структура репозитория</h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>
-                    • <strong>main</strong> - основная ветка для продакшена
-                  </li>
-                  <li>
-                    • <strong>develop</strong> - ветка для интеграции новых функций
-                  </li>
-                  <li>
-                    • <strong>feature/*</strong> - ветки для разработки новых функций
-                  </li>
-                  <li>
-                    • <strong>hotfix/*</strong> - ветки для исправления критических ошибок
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-3">Процесс разработки</h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• Создание feature branch от develop</li>
-                  <li>• Регулярные коммиты с описательными сообщениями</li>
-                  <li>• Pull Request с обязательным code review</li>
-                  <li>• Merge в develop после одобрения</li>
-                </ul>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
         {/* Contact Info */}
         <Card className="mt-8">
           <CardHeader>

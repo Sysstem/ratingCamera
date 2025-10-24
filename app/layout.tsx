@@ -1,10 +1,19 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { GeistSans } from "geist/font/sans"
-import { GeistMono } from "geist/font/mono"
+import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import "./globals.css"
+
+const geistSans = Geist({
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+})
 
 export const metadata: Metadata = {
   title: "Система оценки качества камер телефонов",
@@ -19,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru" className="dark">
-      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased`}>
+      <body className={`font-sans ${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Suspense fallback={null}>{children}</Suspense>
         <Analytics />
       </body>

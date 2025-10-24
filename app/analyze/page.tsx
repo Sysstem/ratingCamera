@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Upload, Camera, BarChart3, FileImage, Zap, Target, AlertCircle } from "lucide-react"
 import Image from "next/image"
+import { analyzeMultipleImages } from "@/lib/image-analysis"
 
 interface AnalysisResult {
   sharpness: number
@@ -28,6 +29,7 @@ export default function AnalyzePage() {
   const [analyzing, setAnalyzing] = useState(false)
   const [results, setResults] = useState<AnalysisResult | null>(null)
   const [isDragActive, setIsDragActive] = useState(false)
+  const [analysisProgress, setAnalysisProgress] = useState<{ [key: string]: number }>({})
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault()
@@ -61,36 +63,57 @@ export default function AnalyzePage() {
     if (uploadedImages.length === 0) return
 
     setAnalyzing(true)
+    setAnalysisProgress({})
 
-    // Симуляция анализа изображений
-    await new Promise((resolve) => setTimeout(resolve, 3000))
+    try {
+      // Обновляем прогресс для каждой метрики
+      const metrics = [
+        "sharpness",
+        "noise",
+        "colorAccuracy",
+        "contrast",
+        "exposure",
+        "distortion",
+        "vignetting",
+        "chromaticAberration",
+      ]
 
-    // Генерация случайных результатов для демонстрации
-    const mockResults: AnalysisResult = {
-      sharpness: Math.random() * 40 + 60, // 60-100
-      noise: Math.random() * 30 + 70, // 70-100
-      colorAccuracy: Math.random() * 35 + 65, // 65-100
-      contrast: Math.random() * 25 + 75, // 75-100
-      exposure: Math.random() * 30 + 70, // 70-100
-      distortion: Math.random() * 20 + 80, // 80-100
-      vignetting: Math.random() * 25 + 75, // 75-100
-      chromaticAberration: Math.random() * 30 + 70, // 70-100
-      overallScore: 0,
+      // Симулируем прогресс для UI
+      for (let i = 0; i < metrics.length; i++) {
+        setAnalysisProgress((prev) => ({
+          ...prev,
+          [metrics[i]]: ((i + 1) / metrics.length) * 100,
+        }))
+        await new Promise((resolve) => setTimeout(resolve, 200))
+      }
+
+      // Выполняем реальный анализ изображений
+      const analysisResults = await analyzeMultipleImages(uploadedImages)
+
+      // Расчет общего балла с весовыми коэффициентами
+      const overallScore =
+        analysisResults.sharpness * 0.2 +
+        analysisResults.noise * 0.15 +
+        analysisResults.colorAccuracy * 0.15 +
+        analysisResults.contrast * 0.15 +
+        analysisResults.exposure * 0.1 +
+        analysisResults.distortion * 0.1 +
+        analysisResults.vignetting * 0.1 +
+        analysisResults.chromaticAberration * 0.05
+
+      const finalResults: AnalysisResult = {
+        ...analysisResults,
+        overallScore,
+      }
+
+      setResults(finalResults)
+    } catch (error) {
+      console.error("[v0] Ошибка при анализе изображений:", error)
+      alert("Произошла ошибка при анализе изображений. Пожалуйста, попробуйте снова.")
+    } finally {
+      setAnalyzing(false)
+      setAnalysisProgress({})
     }
-
-    // Расчет общего балла
-    mockResults.overallScore =
-      mockResults.sharpness * 0.2 +
-      mockResults.noise * 0.15 +
-      mockResults.colorAccuracy * 0.15 +
-      mockResults.contrast * 0.15 +
-      mockResults.exposure * 0.1 +
-      mockResults.distortion * 0.1 +
-      mockResults.vignetting * 0.1 +
-      mockResults.chromaticAberration * 0.05
-
-    setResults(mockResults)
-    setAnalyzing(false)
   }
 
   const getScoreColor = (score: number) => {
@@ -105,6 +128,20 @@ export default function AnalyzePage() {
     if (score >= 80) return "Хорошо"
     if (score >= 70) return "Удовлетворительно"
     return "Требует улучшения"
+  }
+
+  const getMetricName = (key: string): string => {
+    const names: { [key: string]: string } = {
+      sharpness: "Анализ резкости",
+      noise: "Оценка шума",
+      colorAccuracy: "Анализ цветопередачи",
+      contrast: "Измерение контраста",
+      exposure: "Проверка экспозиции",
+      distortion: "Анализ искажений",
+      vignetting: "Проверка виньетирования",
+      chromaticAberration: "Анализ аберраций",
+    }
+    return names[key] || key
   }
 
   return (
@@ -228,29 +265,18 @@ export default function AnalyzePage() {
               <Card>
                 <CardHeader>
                   <CardTitle>Процесс анализа</CardTitle>
+                  <CardDescription>Выполняется комплексный анализ изображений</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div>
-                    <div className="flex justify-between text-sm mb-2">
-                      <span>Анализ резкости</span>
-                      <span>100%</span>
+                  {Object.entries(analysisProgress).map(([metric, progress]) => (
+                    <div key={metric}>
+                      <div className="flex justify-between text-sm mb-2">
+                        <span>{getMetricName(metric)}</span>
+                        <span>{Math.round(progress)}%</span>
+                      </div>
+                      <Progress value={progress} />
                     </div>
-                    <Progress value={100} />
-                  </div>
-                  <div>
-                    <div className="flex justify-between text-sm mb-2">
-                      <span>Оценка шума</span>
-                      <span>85%</span>
-                    </div>
-                    <Progress value={85} />
-                  </div>
-                  <div>
-                    <div className="flex justify-between text-sm mb-2">
-                      <span>Анализ цветопередачи</span>
-                      <span>60%</span>
-                    </div>
-                    <Progress value={60} />
-                  </div>
+                  ))}
                 </CardContent>
               </Card>
             )}

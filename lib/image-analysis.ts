@@ -131,7 +131,8 @@ export function calculateNoise(imageData: ImageData): number {
 
   // Нормализуем: меньше шума = выше балл
   // Типичное stdDev: 10-60
-  const noiseScore = Math.max(0, 100 - stdDev / 0.6)
+  const noiseScore = Math.max(0, 100 - stdDev / 0.9)
+  console.log(varianceR, varianceG, varianceB, stdDev, noiseScore)
 
   return Math.min(100, noiseScore)
 }
@@ -409,7 +410,7 @@ export async function analyzeImage(file: File) {
     contrast: calculateContrast(imageData),
     exposure: calculateExposure(imageData),
     distortion: calculateDistortion(imageData),
-    vignetting: calculateVignetting(imageData),
+    /* vignetting: calculateVignetting(imageData), */
     chromaticAberration: calculateChromaticAberration(imageData),
   }
 }
@@ -427,8 +428,8 @@ export async function analyzeMultipleImages(files: File[]) {
     colorAccuracy: 0,
     contrast: 0,
     exposure: 0,
-    distortion: 0,
-    vignetting: 0,
+    distortion: 0,/* 
+    vignetting: 0, */
     chromaticAberration: 0,
   }
 
@@ -439,7 +440,7 @@ export async function analyzeMultipleImages(files: File[]) {
     averaged.contrast += result.contrast
     averaged.exposure += result.exposure
     averaged.distortion += result.distortion
-    averaged.vignetting += result.vignetting
+    /* averaged.vignetting += result.vignetting */
     averaged.chromaticAberration += result.chromaticAberration
   }
 
@@ -452,7 +453,7 @@ export async function analyzeMultipleImages(files: File[]) {
     contrast: averaged.contrast / count,
     exposure: averaged.exposure / count,
     distortion: averaged.distortion / count,
-    vignetting: averaged.vignetting / count,
+    /* vignetting: averaged.vignetting / count, */
     chromaticAberration: averaged.chromaticAberration / count,
   }
 }

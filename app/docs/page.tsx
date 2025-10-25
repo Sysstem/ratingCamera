@@ -373,56 +373,6 @@ export default function DocsPage() {
                       </div>
                     </div>
                   </div>
-
-                  <div>
-                    <h3 className="text-lg font-semibold mb-3">Стандарты и спецификации</h3>
-                    <div className="space-y-4">
-                      <div className="border-l-4 border-secondary pl-4">
-                        <h4 className="font-medium">ISO 12233:2017</h4>
-                        <p className="text-sm text-muted-foreground">
-                          Photography — Electronic still picture imaging — Resolution and spatial frequency responses
-                        </p>
-                      </div>
-
-                      <div className="border-l-4 border-secondary pl-4">
-                        <h4 className="font-medium">ISO 15739:2013</h4>
-                        <p className="text-sm text-muted-foreground">
-                          Photography — Electronic still-picture imaging — Noise measurements
-                        </p>
-                      </div>
-
-                      <div className="border-l-4 border-secondary pl-4">
-                        <h4 className="font-medium">CIE Publication 15:2018</h4>
-                        <p className="text-sm text-muted-foreground">Colorimetry, 4th Edition</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h3 className="text-lg font-semibold mb-3">Дополнительные материалы</h3>
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <Card>
-                        <CardContent className="p-4">
-                          <h4 className="font-medium mb-2">Обработка изображений</h4>
-                          <ul className="text-sm text-muted-foreground space-y-1">
-                            <li>• OpenCV Documentation</li>
-                            <li>• scikit-image User Guide</li>
-                            <li>• ImageJ User Guide</li>
-                          </ul>
-                        </CardContent>
-                      </Card>
-                      <Card>
-                        <CardContent className="p-4">
-                          <h4 className="font-medium mb-2">Колориметрия</h4>
-                          <ul className="text-sm text-muted-foreground space-y-1">
-                            <li>• X-Rite ColorChecker</li>
-                            <li>• Adobe Color Science</li>
-                            <li>• ICC Profiles Specification</li>
-                          </ul>
-                        </CardContent>
-                      </Card>
-                    </div>
-                  </div>
                 </div>
               </CardContent>
             </Card>

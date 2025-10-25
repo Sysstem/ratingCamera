@@ -19,7 +19,7 @@ interface AnalysisResult {
   contrast: number
   exposure: number
   distortion: number
-  vignetting: number
+  /* vignetting: number */
   chromaticAberration: number
   overallScore: number
 }
@@ -74,7 +74,7 @@ export default function AnalyzePage() {
         "contrast",
         "exposure",
         "distortion",
-        "vignetting",
+        //"vignetting",
         "chromaticAberration",
       ]
 
@@ -98,7 +98,7 @@ export default function AnalyzePage() {
         analysisResults.contrast * 0.15 +
         analysisResults.exposure * 0.1 +
         analysisResults.distortion * 0.1 +
-        analysisResults.vignetting * 0.1 +
+       /*  analysisResults.vignetting * 0.1 + */
         analysisResults.chromaticAberration * 0.05
 
       const finalResults: AnalysisResult = {
@@ -138,7 +138,7 @@ export default function AnalyzePage() {
       contrast: "Измерение контраста",
       exposure: "Проверка экспозиции",
       distortion: "Анализ искажений",
-      vignetting: "Проверка виньетирования",
+     /*  vignetting: "Проверка виньетирования", */
       chromaticAberration: "Анализ аберраций",
     }
     return names[key] || key
@@ -315,7 +315,7 @@ export default function AnalyzePage() {
                         { name: "Контраст", value: results.contrast, description: "Динамический диапазон" },
                         { name: "Экспозиция", value: results.exposure, description: "Правильность освещения" },
                         { name: "Искажения", value: results.distortion, description: "Геометрические искажения" },
-                        { name: "Виньетирование", value: results.vignetting, description: "Затемнение по краям" },
+                        /* { name: "Виньетирование", value: results.vignetting, description: "Затемнение по краям" }, */
                         {
                           name: "Хром. аберрации",
                           value: results.chromaticAberration,

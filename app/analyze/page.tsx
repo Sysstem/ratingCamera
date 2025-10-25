@@ -74,7 +74,6 @@ export default function AnalyzePage() {
         "contrast",
         "exposure",
         "distortion",
-        //"vignetting",
         "chromaticAberration",
       ]
 
@@ -92,13 +91,12 @@ export default function AnalyzePage() {
 
       // Расчет общего балла с весовыми коэффициентами
       const overallScore =
-        analysisResults.sharpness * 0.2 +
-        analysisResults.noise * 0.15 +
+        analysisResults.sharpness * 0.25 +
+        analysisResults.noise * 0.20 +
         analysisResults.colorAccuracy * 0.15 +
         analysisResults.contrast * 0.15 +
         analysisResults.exposure * 0.1 +
         analysisResults.distortion * 0.1 +
-       /*  analysisResults.vignetting * 0.1 + */
         analysisResults.chromaticAberration * 0.05
 
       const finalResults: AnalysisResult = {
@@ -315,7 +313,6 @@ export default function AnalyzePage() {
                         { name: "Контраст", value: results.contrast, description: "Динамический диапазон" },
                         { name: "Экспозиция", value: results.exposure, description: "Правильность освещения" },
                         { name: "Искажения", value: results.distortion, description: "Геометрические искажения" },
-                        /* { name: "Виньетирование", value: results.vignetting, description: "Затемнение по краям" }, */
                         {
                           name: "Хром. аберрации",
                           value: results.chromaticAberration,

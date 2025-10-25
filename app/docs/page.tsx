@@ -213,18 +213,6 @@ export default function DocsPage() {
 
                 <Card>
                   <CardHeader>
-                    <CardTitle>Виньетирование</CardTitle>
-                    <Badge variant="secondary">Вес: 10%</Badge>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground">
-                      Радиальное затемнение по краям изображения, анализ равномерности освещения
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardHeader>
                     <CardTitle>Хроматические аберрации</CardTitle>
                     <Badge variant="secondary">Вес: 5%</Badge>
                   </CardHeader>

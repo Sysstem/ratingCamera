@@ -18,7 +18,7 @@ interface CameraRating {
 }
 
 const cameraRatings: CameraRating[] = [
-  {
+  /* {
     id: 1,
     brand: "iPhone",
     model: "15 Pro Max",
@@ -29,67 +29,7 @@ const cameraRatings: CameraRating[] = [
     contrast: 90,
     rank: 1,
     tested: true,
-  },
-  {
-    id: 2,
-    brand: "Samsung",
-    model: "Galaxy S24 Ultra",
-    overallScore: 90.8,
-    sharpness: 93,
-    noise: 89,
-    colorAccuracy: 92,
-    contrast: 89,
-    rank: 2,
-    tested: true,
-  },
-  {
-    id: 3,
-    brand: "Google",
-    model: "Pixel 8 Pro",
-    overallScore: 89.2,
-    sharpness: 91,
-    noise: 88,
-    colorAccuracy: 90,
-    contrast: 87,
-    rank: 3,
-    tested: true,
-  },
-  {
-    id: 4,
-    brand: "Xiaomi",
-    model: "14 Ultra",
-    overallScore: 87.6,
-    sharpness: 89,
-    noise: 86,
-    colorAccuracy: 88,
-    contrast: 87,
-    rank: 4,
-    tested: false,
-  },
-  {
-    id: 5,
-    brand: "OnePlus",
-    model: "12 Pro",
-    overallScore: 85.3,
-    sharpness: 87,
-    noise: 84,
-    colorAccuracy: 86,
-    contrast: 84,
-    rank: 5,
-    tested: false,
-  },
-  {
-    id: 6,
-    brand: "Huawei",
-    model: "P60 Pro",
-    overallScore: 83.7,
-    sharpness: 85,
-    noise: 82,
-    colorAccuracy: 84,
-    contrast: 83,
-    rank: 6,
-    tested: false,
-  },
+  }, */
 ]
 
 export default function RatingPage() {
@@ -299,11 +239,11 @@ export default function RatingPage() {
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
                     <span>Резкость</span>
-                    <span className="font-mono">20%</span>
+                    <span className="font-mono">25%</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Шум</span>
-                    <span className="font-mono">15%</span>
+                    <span className="font-mono">20%</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Цветопередача</span>
@@ -322,10 +262,6 @@ export default function RatingPage() {
                     <span className="font-mono">10%</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Виньетирование</span>
-                    <span className="font-mono">10%</span>
-                  </div>
-                  <div className="flex justify-between">
                     <span>Хроматические аберрации</span>
                     <span className="font-mono">5%</span>
                   </div>
@@ -339,7 +275,6 @@ export default function RatingPage() {
                   <p>• Автоматические настройки камеры</p>
                   <p>• Стабилизация включена</p>
                   <p>• Формат изображения: JPEG высокого качества</p>
-                  <p>• Минимум 5 снимков для каждой камеры</p>
                   <p>• Анализ проводится на оригинальных файлах</p>
                 </div>
               </div>

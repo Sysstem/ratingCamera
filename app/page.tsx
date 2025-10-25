@@ -165,7 +165,6 @@ export default function HomePage() {
               { name: "Контраст", description: "Динамический диапазон", value: "RMS, Michelson" },
               { name: "Экспозиция", description: "Правильность освещения", value: "Histogram, Zones" },
               { name: "Искажения", description: "Геометрические искажения", value: "Barrel, Pincushion" },
-              { name: "Виньетирование", description: "Затемнение по краям", value: "Radial falloff" },
               { name: "Хроматические аберрации", description: "Цветовые искажения", value: "CA index" },
             ].map((metric, index) => (
               <Card key={index} className="border-border/50 bg-card/50 backdrop-blur-sm">

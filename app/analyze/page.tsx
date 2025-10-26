@@ -181,7 +181,7 @@ export default function AnalyzePage() {
                   <Upload className="h-5 w-5" />
                   Загрузка изображений
                 </CardTitle>
-                <CardDescription>Поддерживаются форматы: JPEG, PNG, WebP</CardDescription>
+                <CardDescription>Поддерживаются форматы: JPEG</CardDescription>
               </CardHeader>
               <CardContent>
                 <div

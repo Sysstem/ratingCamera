@@ -45,186 +45,259 @@ export default function DocsPage() {
 
           <TabsContent value="metrics" className="space-y-6">
             <div className="grid gap-6">
-              {/* Sharpness */}
-              <Card>
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="flex items-center gap-2">
-                      <Target className="h-5 w-5" />
-                      Резкость (Sharpness)
-                    </CardTitle>
-                    <Badge variant="secondary">Вес: 20%</Badge>
-                  </div>
-                  <CardDescription>Оценка четкости деталей и границ объектов на изображении</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="font-semibold mb-2">Используемые алгоритмы:</h4>
-                      <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                        <li>
-                          <strong>SSIM (Structural Similarity Index)</strong> - сравнение структурного сходства
-                        </li>
-                        <li>
-                          <strong>Laplacian Variance</strong> - анализ градиентов изображения
-                        </li>
-                        <li>
-                          <strong>Sobel Edge Detection</strong> - выделение границ объектов
-                        </li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-2">Формула расчета:</h4>
-                      <code className="bg-muted p-2 rounded text-sm block">
-                        Sharpness = 0.4 × SSIM + 0.4 × Laplacian_Var + 0.2 × Sobel_Score
-                      </code>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Noise */}
-              <Card>
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="flex items-center gap-2">
-                      <Zap className="h-5 w-5" />
-                      Шум (Noise Level)
-                    </CardTitle>
-                    <Badge variant="secondary">Вес: 15%</Badge>
-                  </div>
-                  <CardDescription>Измерение уровня цифрового шума в изображении</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="font-semibold mb-2">Используемые метрики:</h4>
-                      <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                        <li>
-                          <strong>PSNR (Peak Signal-to-Noise Ratio)</strong> - отношение сигнал/шум
-                        </li>
-                        <li>
-                          <strong>SNR (Signal-to-Noise Ratio)</strong> - общий уровень шума
-                        </li>
-                        <li>
-                          <strong>Wavelet Denoising Analysis</strong> - анализ шума в частотной области
-                        </li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-2">Формула расчета:</h4>
-                      <code className="bg-muted p-2 rounded text-sm block">
-                        Noise_Score = 100 - (Noise_Level × 100 / Max_Noise)
-                      </code>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Color Accuracy */}
-              <Card>
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <CardTitle>Цветопередача (Color Accuracy)</CardTitle>
-                    <Badge variant="secondary">Вес: 15%</Badge>
-                  </div>
-                  <CardDescription>Точность воспроизведения цветов относительно эталонных значений</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="font-semibold mb-2">Используемые методы:</h4>
-                      <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                        <li>
-                          <strong>Delta E (CIE76, CIE94, CIE2000)</strong> - различие в цветовом пространстве
-                        </li>
-                        <li>
-                          <strong>Color Gamut Analysis</strong> - анализ цветового охвата
-                        </li>
-                        <li>
-                          <strong>White Balance Accuracy</strong> - точность баланса белого
-                        </li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-2">Эталонные цвета:</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Используется цветовая мишень ColorChecker Classic с 24 эталонными цветами
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Contrast */}
-              <Card>
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <CardTitle>Контраст (Contrast)</CardTitle>
-                    <Badge variant="secondary">Вес: 15%</Badge>
-                  </div>
-                  <CardDescription>Динамический диапазон и контрастность изображения</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="font-semibold mb-2">Анализируемые параметры:</h4>
-                      <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                        <li>
-                          <strong>RMS Contrast</strong> - среднеквадратичный контраст
-                        </li>
-                        <li>
-                          <strong>Michelson Contrast</strong> - контраст по Майкельсону
-                        </li>
-                        <li>
-                          <strong>Dynamic Range</strong> - динамический диапазон
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Additional Metrics */}
-              <div className="grid md:grid-cols-2 gap-6">
+                
                 <Card>
-                  <CardHeader>
-                    <CardTitle>Экспозиция</CardTitle>
-                    <Badge variant="secondary">Вес: 10%</Badge>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground">
-                      Анализ гистограммы, зональная система Анселя Адамса, оценка пересветов и недосветов
-                    </p>
-                  </CardContent>
+                    <CardHeader>
+                        <div className="flex items-center justify-between">
+                            <CardTitle className="flex items-center gap-2">
+                                <Target className="h-5 w-5" />
+                                Резкость (Sharpness)
+                            </CardTitle>
+                            <Badge variant="secondary">Вес: 25%</Badge>
+                        </div>
+                        <CardDescription>Оценка четкости деталей и границ объектов на изображении</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <div className="space-y-4">
+                            <div>
+                                <h4 className="font-semibold mb-2">Используемые алгоритмы:</h4>
+                                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                                    <li>
+                                        <strong>Laplacian Variance</strong> - дисперсия лапласиана для оценки резкости
+                                    </li>
+                                    <li>
+                                        <strong>Оператор Лапласа 3x3</strong> - выделение высокочастотных компонентов
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 className="font-semibold mb-2">Формула расчета:</h4>
+                                <code className="bg-muted p-2 rounded text-sm block">
+                                    Sharpness = min(100, 100 × log₁ₐ(variance) / 10)<br />
+                                    где variance = Σ(laplacian²) / count
+                                </code>
+                            </div>
+                        </div>
+                    </CardContent>
                 </Card>
 
+                
                 <Card>
-                  <CardHeader>
-                    <CardTitle>Искажения</CardTitle>
-                    <Badge variant="secondary">Вес: 10%</Badge>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground">
-                      Бочкообразные и подушкообразные искажения, анализ геометрической точности
-                    </p>
-                  </CardContent>
+                    <CardHeader>
+                        <div className="flex items-center justify-between">
+                            <CardTitle className="flex items-center gap-2">
+                                <Zap className="h-5 w-5" />
+                                Шум (Noise Level)
+                            </CardTitle>
+                            <Badge variant="secondary">Вес: 20%</Badge>
+                        </div>
+                        <CardDescription>Измерение уровня цифрового шума и JPEG артефактов в изображении</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <div className="space-y-4">
+                            <div>
+                                <h4 className="font-semibold mb-2">Используемые метрики:</h4>
+                                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                                    <li>
+                                        <strong>Анализ в однородных областях</strong> - поиск блоков 4×4 с низкой дисперсией
+                                    </li>
+                                    <li>
+                                        <strong>Высокочастотный шум</strong> - разность соседних пикселей
+                                    </li>
+                                    <li>
+                                        <strong>JPEG блочность</strong> - анализ границ блоков сжатия
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 className="font-semibold mb-2">Формула расчета:</h4>
+                                <code className="bg-muted p-2 rounded text-sm block">
+                                    Noise_Score = 100 - (0.5×HighFreqNoise + 0.3×LocalVariance + 0.2×BlockingArtifacts)<br />
+                                    HighFreqNoise = Σ|center - neighbor| / count
+                                </code>
+                            </div>
+                        </div>
+                    </CardContent>
                 </Card>
 
+                
                 <Card>
-                  <CardHeader>
-                    <CardTitle>Хроматические аберрации</CardTitle>
-                    <Badge variant="secondary">Вес: 5%</Badge>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground">
-                      Цветовые искажения на границах объектов, продольные и поперечные аберрации
-                    </p>
-                  </CardContent>
+                    <CardHeader>
+                        <div className="flex items-center justify-between">
+                            <CardTitle>Цветопередача (Color Accuracy)</CardTitle>
+                            <Badge variant="secondary">Вес: 15%</Badge>
+                        </div>
+                        <CardDescription>Баланс цветовых каналов и насыщенность изображения</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <div className="space-y-4">
+                            <div>
+                                <h4 className="font-semibold mb-2">Используемые методы:</h4>
+                                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                                    <li>
+                                        <strong>Насыщенность цвета</strong> - анализ цветовой насыщенности (S = (max - min) / max)
+                                    </li>
+                                    <li>
+                                        <strong>Баланс каналов</strong> - отклонение каналов RGB от среднего значения
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 className="font-semibold mb-2">Формула расчета:</h4>
+                                <code className="bg-muted p-2 rounded text-sm block">
+                                    Color_Score = 0.4 × Saturation_Score + 0.6 × Balance_Score<br />
+                                    Balance_Score = max(0, 100 - avg_deviation / 2)
+                                </code>
+                            </div>
+                        </div>
+                    </CardContent>
                 </Card>
-              </div>
+
+                
+                <Card>
+                    <CardHeader>
+                        <div className="flex items-center justify-between">
+                            <CardTitle>Контраст (Contrast)</CardTitle>
+                            <Badge variant="secondary">Вес: 15%</Badge>
+                        </div>
+                        <CardDescription>Динамический диапазон и контрастность изображения с учетом яркости</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <div className="space-y-4">
+                            <div>
+                                <h4 className="font-semibold mb-2">Анализируемые параметры:</h4>
+                                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                                    <li>
+                                        <strong>RMS Contrast</strong> - среднеквадратичный контраст
+                                    </li>
+                                    <li>
+                                        <strong>Динамический диапазон</strong> - разность 5-го и 95-го процентилей
+                                    </li>
+                                    <li>
+                                        <strong>Коррекция яркости</strong> - учет средней яркости для восприятия
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 className="font-semibold mb-2">Формула расчета:</h4>
+                                <code className="bg-muted p-2 rounded text-sm block">
+                                    RMS_Contrast = √(Σ(lum - mean_lum)² / N)<br />
+                                    Contrast_Score = (RMS_Contrast / 127) × 100 × (0.7 + 0.3 × brightness_factor)
+                                </code>
+                            </div>
+                        </div>
+                    </CardContent>
+                </Card>
+
+                
+                <Card>
+                    <CardHeader>
+                        <div className="flex items-center justify-between">
+                            <CardTitle>Экспозиция (Exposure)</CardTitle>
+                            <Badge variant="secondary">Вес: 10%</Badge>
+                        </div>
+                        <CardDescription>Анализ распределения яркости и клиппинга в тенях/светах</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <div className="space-y-4">
+                            <div>
+                                <h4 className="font-semibold mb-2">Используемые методы:</h4>
+                                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                                    <li>
+                                        <strong>Медианная яркость</strong> - 50-й процентиль гистограммы (идеал ~128)
+                                    </li>
+                                    <li>
+                                        <strong>Анализ клиппинга</strong> - пересветы (240-255) и недосветы (0-15)
+                                    </li>
+                                    <li>
+                                        <strong>Распределение тонов</strong> - детали в тенях, средних тонах и светах
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 className="font-semibold mb-2">Формула расчета:</h4>
+                                <code className="bg-muted p-2 rounded text-sm block">
+                                    Exposure_Score = 0.4×Median_Score + 0.4×Balance_Score + 0.2×(100-Clipping_Penalty)<br />
+                                    Median_Score = 100 - |median - 128| / 128 × 100
+                                </code>
+                            </div>
+                        </div>
+                    </CardContent>
+                </Card>
+
+                
+                <Card>
+                    <CardHeader>
+                        <div className="flex items-center justify-between">
+                            <CardTitle>Геометрические искажения (Distortion)</CardTitle>
+                            <Badge variant="secondary">Вес: 10%</Badge>
+                        </div>
+                        <CardDescription>Анализ прямолинейности линий через преобразование Хафа</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <div className="space-y-4">
+                            <div>
+                                <h4 className="font-semibold mb-2">Используемые методы:</h4>
+                                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                                    <li>
+                                        <strong>Преобразование Хафа</strong> - детектирование прямых линий
+                                    </li>
+                                    <li>
+                                        <strong>Оператор Собеля</strong> - выделение краев с пониженным разрешением
+                                    </li>
+                                    <li>
+                                        <strong>Анализ кривизны</strong> - отклонение точек линии от идеальной прямой
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 className="font-semibold mb-2">Формула расчета:</h4>
+                                <code className="bg-muted p-2 rounded text-sm block">
+                                    Curvature = Σ|y_actual - (slope×x + intercept)| / N<br />
+                                    Distortion_Score = max(0, 100 - avg_curvature × 1000)
+                                </code>
+                            </div>
+                        </div>
+                    </CardContent>
+                </Card>
+
+                
+                <Card>
+                    <CardHeader>
+                        <div className="flex items-center justify-between">
+                            <CardTitle>Хроматические аберрации</CardTitle>
+                            <Badge variant="secondary">Вес: 5%</Badge>
+                        </div>
+                        <CardDescription>Анализ смещения цветовых каналов через градиенты в угловых областях</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <div className="space-y-4">
+                            <div>
+                                <h4 className="font-semibold mb-2">Используемые методы:</h4>
+                                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                                    <li>
+                                        <strong>Анализ градиентов</strong> - оператор Собеля для каждого цветового канала
+                                    </li>
+                                    <li>
+                                        <strong>Сравнение каналов</strong> - разница градиентов R, G, B в угловых областях
+                                    </li>
+                                    <li>
+                                        <strong>Фокус на краях</strong> - анализ 20% областей по углам изображения
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 className="font-semibold mb-2">Формула расчета:</h4>
+                                <code className="bg-muted p-2 rounded text-sm block">
+                                    Aberration = Σ(|∇R - ∇G| + |∇R - ∇B| + |∇G - ∇B|) / count<br />
+                                    CA_Score = max(0, 100 - avg_aberration × 3)
+                                </code>
+                            </div>
+                        </div>
+                    </CardContent>
+                </Card>
             </div>
-          </TabsContent>
+        </TabsContent>
 
           <TabsContent value="methodology" className="space-y-6">
             <Card>
@@ -315,52 +388,88 @@ export default function DocsPage() {
                 <CardDescription>Ссылки на научные статьи и стандарты, используемые в системе</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="space-y-6">
-                  <div>
-                    <h3 className="text-lg font-semibold mb-3">Основные источники</h3>
-                    <div className="space-y-4">
-                      <div className="border-l-4 border-primary pl-4">
-                        <h4 className="font-medium">
-                          Image Quality Assessment: From Error Visibility to Structural Similarity
-                        </h4>
-                        <p className="text-sm text-muted-foreground">
-                          Wang, Z., Bovik, A. C., Sheikh, H. R., & Simoncelli, E. P. (2004)
-                        </p>
-                        <Button variant="link" className="p-0 h-auto" asChild>
-                          <a href="https://doi.org/10.1109/TIP.2003.819861" target="_blank" rel="noreferrer">
-                            <ExternalLink className="h-3 w-3 mr-1" />
-                            IEEE Transactions on Image Processing
-                          </a>
-                        </Button>
-                      </div>
-
-                      <div className="border-l-4 border-primary pl-4">
-                        <h4 className="font-medium">A Wavelet Tour of Signal Processing</h4>
-                        <p className="text-sm text-muted-foreground">Mallat, S. (2008). Academic Press</p>
-                        <Button variant="link" className="p-0 h-auto" asChild>
-                          <a href="https://doi.org/10.1016/B978-0-12-374370-1.X0001-8" target="_blank" rel="noreferrer">
-                            <ExternalLink className="h-3 w-3 mr-1" />
-                            Academic Press
-                          </a>
-                        </Button>
-                      </div>
-
-                      <div className="border-l-4 border-primary pl-4">
-                        <h4 className="font-medium">Digital Image Processing</h4>
-                        <p className="text-sm text-muted-foreground">Gonzalez, R. C., & Woods, R. E. (2017). Pearson</p>
-                        <Button variant="link" className="p-0 h-auto" asChild>
-                          <a
-                            href="https://www.pearson.com/us/higher-education/program/Gonzalez-Digital-Image-Processing-4th-Edition/PGM241219.html"
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            <ExternalLink className="h-3 w-3 mr-1" />
-                            Pearson Education
-                          </a>
-                        </Button>
-                      </div>
+                <div>
+                  <div className="max-w-4xl mx-auto space-y-4 p-4">
+                    <div className="border border-border/50 rounded-xl p-6 bg-transparent">
+                        <h3 className="text-lg font-semibold mb-2">Оператор Лапласа для оценки резкости</h3>
+                        <p className="mb-2"><strong>Функция:</strong> calculateSharpness</p>
+                        <p className="mb-2"><strong>Алгоритм:</strong> Laplace Variance Method for Image Sharpness Assessment</p>
+                        <p className="mb-2"><strong>Источник:</strong> Pech-Pacheco, J. L., et al. "Diatom autofocusing in brightfield microscopy: a comparative study." Proceedings 15th International Conference on Pattern Recognition (2000)</p>
+                        <a href="https://doi.org/10.1109/ICPR.2000.903548" className="text-blue-600 hover:text-blue-800 underline">https://doi.org/10.1109/ICPR.2000.903548</a>
                     </div>
-                  </div>
+
+                    <div className="border border-border/50 rounded-xl p-6 bg-transparent">
+                        <h3 className="text-lg font-semibold mb-2">Преобразование Хафа для детектирования линий</h3>
+                        <p className="mb-2"><strong>Функция:</strong> houghTransformSimplified</p>
+                        <p className="mb-2"><strong>Алгоритм:</strong> Hough Transform for Line Detection</p>
+                        <p className="mb-2"><strong>Источник:</strong> Duda, R. O., & Hart, P. E. "Use of the Hough transformation to detect lines and curves in pictures." Communications of the ACM (1972)</p>
+                        <a href="https://doi.org/10.1145/361237.361242" className="text-blue-600 hover:text-blue-800 underline">https://doi.org/10.1145/361237.361242</a>
+                    </div>
+
+                    <div className="border border-border/50 rounded-xl p-6 bg-transparent">
+                        <h3 className="text-lg font-semibold mb-2">Оператор Собеля для детектирования краев</h3>
+                        <p className="mb-2"><strong>Функция:</strong> calculatePixelGradient, detectEdgesSimplified</p>
+                        <p className="mb-2"><strong>Алгоритм:</strong> Sobel Operator for Edge Detection</p>
+                        <p className="mb-2"><strong>Источник:</strong> Sobel, I., & Feldman, G. "A 3x3 isotropic gradient operator for image processing." Pattern ClassNameification and Scene Analysis (1973)</p>
+                        <p className="text-gray-600">Стандартный алгоритм компьютерного зрения</p>
+                    </div>
+
+                    <div className="border border-border/50 rounded-xl p-6 bg-transparent">
+                        <h3 className="text-lg font-semibold mb-2">Анализ шума в однородных областях</h3>
+                        <p className="mb-2"><strong>Функция:</strong> calculateNoise, findHomogeneousBlocks</p>
+                        <p className="mb-2"><strong>Алгоритм:</strong> Homogeneous Region Analysis for Noise Estimation</p>
+                        <p className="mb-2"><strong>Источник:</strong> Liu, C., et al. "Noise estimation from a single image." IEEE Conference on Computer Vision and Pattern Recognition (2006)</p>
+                        <a href="https://doi.org/10.1109/CVPR.2006.90" className="text-blue-600 hover:text-blue-800 underline">https://doi.org/10.1109/CVPR.2006.90</a>
+                    </div>
+
+                    <div className="border border-border/50 rounded-xl p-6 bg-transparent">
+                        <h3 className="text-lg font-semibold mb-2">RMS контраст</h3>
+                        <p className="mb-2"><strong>Функция:</strong> calculateContrast</p>
+                        <p className="mb-2"><strong>Алгоритм:</strong> Root Mean Square Contrast</p>
+                        <p className="mb-2"><strong>Источник:</strong> Peli, E. "Contrast in complex images." Journal of the Optical Society of America A (1990)</p>
+                        <a href="https://doi.org/10.1364/JOSAA.7.000203" className="text-blue-600 hover:text-blue-800 underline">https://doi.org/10.1364/JOSAA.7.000203</a>
+                    </div>
+
+                    <div className="border border-border/50 rounded-xl p-6 bg-transparent">
+                        <h3 className="text-lg font-semibold mb-2">Анализ гистограммы для экспозиции</h3>
+                        <p className="mb-2"><strong>Функция:</strong> calculateExposure, findPercentile</p>
+                        <p className="mb-2"><strong>Алгоритм:</strong> Histogram Percentile Analysis for Exposure Assessment</p>
+                        <p className="mb-2"><strong>Источник:</strong> Standard photography techniques - анализ гистограммы яркости</p>
+                        <p className="text-gray-600">Стандартный метод в цифровой фотографии</p>
+                    </div>
+
+                    <div className="border border-border/50 rounded-xl p-6 bg-transparent">
+                        <h3 className="text-lg font-semibold mb-2">Анализ хроматических аберраций через градиенты</h3>
+                        <p className="mb-2"><strong>Функция:</strong> calculateChromaticAberrationImproved</p>
+                        <p className="mb-2"><strong>Алгоритм:</strong> Chromatic Aberration Detection via Channel Gradient Discrepancy</p>
+                        <p className="mb-2"><strong>Источник:</strong> Kang, S. B. "Automatic removal of chromatic aberration from a single image." IEEE Conference on Computer Vision and Pattern Recognition (2007)</p>
+                        <a href="https://doi.org/10.1109/CVPR.2007.383011" className="text-blue-600 hover:text-blue-800 underline">https://doi.org/10.1109/CVPR.2007.383011</a>
+                    </div>
+
+                    <div className="border border-border/50 rounded-xl p-6 bg-transparent">
+                        <h3 className="text-lg font-semibold mb-2">Анализ цветопередачи через насыщенность и баланс</h3>
+                        <p className="mb-2"><strong>Функция:</strong> calculateColorAccuracy</p>
+                        <p className="mb-2"><strong>Алгоритм:</strong> Color Saturation and Channel Balance Analysis</p>
+                        <p className="mb-2"><strong>Источник:</strong> Стандартные метрики цветового анализа в обработке изображений</p>
+                        <p className="text-gray-600">Основы цветовых пространств и анализа</p>
+                    </div>
+
+                    <div className="border border-border/50 rounded-xl p-6 bg-transparent">
+                        <h3 className="text-lg font-semibold mb-2">JPEG блочность артефактов</h3>
+                        <p className="mb-2"><strong>Функция:</strong> calculateBlockingArtifacts</p>
+                        <p className="mb-2"><strong>Алгоритм:</strong> Blocking Artifact Detection in JPEG Images</p>
+                        <p className="mb-2"><strong>Источник:</strong> Wang, Z., et al. "Blind measurement of blocking artifacts in images." IEEE International Conference on Image Processing (2000)</p>
+                        <a href="https://doi.org/10.1109/ICIP.2000.899476" className="text-blue-600 hover:text-blue-800 underline">https://doi.org/10.1109/ICIP.2000.899476</a>
+                    </div>
+
+                    <div className="border border-border/50 rounded-xl p-6 bg-transparent">
+                        <h3 className="text-lg font-semibold mb-2">Преобразование RGB в яркость</h3>
+                        <p className="mb-2"><strong>Функция:</strong> Используется в большинстве функций</p>
+                        <p className="mb-2"><strong>Алгоритм:</strong> RGB to Luminance Conversion (Rec. 601)</p>
+                        <p className="mb-2"><strong>Источник:</strong> ITU-R Recommendation BT.601 "Studio encoding parameters of digital television"</p>
+                        <a href="https://www.itu.int/rec/R-REC-BT.601" className="text-blue-600 hover:text-blue-800 underline">https://www.itu.int/rec/R-REC-BT.601</a>
+                    </div>
+                </div>
                 </div>
               </CardContent>
             </Card>

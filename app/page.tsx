@@ -198,56 +198,6 @@ export default function HomePage() {
           </Button>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="border-t border-border bg-card/50 backdrop-blur-sm py-12 px-4">
-        <div className="container mx-auto">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <Camera className="h-6 w-6 text-primary" />
-                <span className="font-bold">Система оценки камер</span>
-              </div>
-              <p className="text-sm text-muted-foreground">Академический проект для оценки качества камер телефонов</p>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Навигация</h3>
-              <div className="space-y-2 text-sm">
-                <Link href="/analyze" className="block text-muted-foreground hover:text-foreground">
-                  Анализ изображений
-                </Link>
-                <Link href="/rating" className="block text-muted-foreground hover:text-foreground">
-                  Рейтинг камер
-                </Link>
-                <Link href="/docs" className="block text-muted-foreground hover:text-foreground">
-                  Документация
-                </Link>
-              </div>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Проект</h3>
-              <div className="space-y-2 text-sm">
-                <Link href="/team" className="block text-muted-foreground hover:text-foreground">
-                  Команда
-                </Link>
-                <Link href="/improvements" className="block text-muted-foreground hover:text-foreground">
-                  Улучшения
-                </Link>
-                <a href="https://github.com" className="block text-muted-foreground hover:text-foreground">
-                  GitHub
-                </a>
-              </div>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Контакты</h3>
-              <p className="text-sm text-muted-foreground">Преподаватель: Верещагин В.Ю.</p>
-            </div>
-          </div>
-          <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
-            © 2025 Система оценки качества камер телефонов. Академический проект.
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }

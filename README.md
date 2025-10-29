@@ -117,8 +117,16 @@ npm run dev
 - Гонсалес, Р. Цифровая обработка изображений : практические советы / Р. Гонсалес, Р. Вудс ; пер. П.А. Чочиа, Л.И. Рубанова. – 3-е изд., испр. и доп. – Москва : Техносфера, 2012. – 1104 с.
 - Mallat, S. (2008). "A Wavelet Tour of Signal Processing"
 - Gonzalez, R. C., & Woods, R. E. (2017). "Digital Image Processing"
+- Pech-Pacheco, J. L., et al. "Diatom autofocusing in brightfield microscopy: a comparative study." Proceedings 15th International Conference on Pattern Recognition (2000)
+- Duda, R. O., & Hart, P. E. "Use of the Hough transformation to detect lines and curves in pictures." Communications of the ACM (1972)
+- Sobel, I., & Feldman, G. "A 3x3 isotropic gradient operator for image processing." Pattern ClassNameification and Scene Analysis (1973)
+- Liu, C., et al. "Noise estimation from a single image." IEEE Conference on Computer Vision and Pattern Recognition (2006)
+- Peli, E. "Contrast in complex images." Journal of the Optical Society of America A (1990)
+- Kang, S. B. "Automatic removal of chromatic aberration from a single image." IEEE Conference on Computer Vision and Pattern Recognition (2007)
+- Wang, Z., et al. "Blind measurement of blocking artifacts in images." IEEE International Conference on Image Processing (2000)
+- ITU-R Recommendation BT.601 "Studio encoding parameters of digital television"
 
-Полный список источников доступен в разделе "Документация" приложения.
+### Ссылки на источники приведены в разделе "Документация" в окне под заголовком "Источники" в самом приложении
 
 ## 🔮 Планы развития
 
